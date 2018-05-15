@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 15 Mai 2018 à 09:16
+-- Généré le: Mar 15 Mai 2018 à 12:25
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.4.3
 
@@ -47,9 +47,7 @@ CREATE TABLE IF NOT EXISTS `devis` (
   `dateDevis` date NOT NULL,
   `urlDevis` varchar(30) NOT NULL,
   `idClient` int(20) NOT NULL,
-  `idFacture` int(20) NOT NULL,
   PRIMARY KEY (`idDevis`),
-  KEY `fk_devis_factures` (`idFacture`),
   KEY `fk_devis_client` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -65,8 +63,10 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `numeroFacture` int(30) NOT NULL,
   `dateFacture` date NOT NULL,
   `urlFacture` varchar(30) NOT NULL,
+  `idDevis` int(20) NOT NULL,
   PRIMARY KEY (`idFacture`),
-  KEY `fk_client_facture` (`idClient`)
+  KEY `fk_client_facture` (`idClient`),
+  KEY `fk_factures_devis` (`idDevis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -134,13 +134,13 @@ INSERT INTO `proprietaire` (`prenom`, `nom`, `adresse`, `numeroFixe`, `numeroPor
 -- Contraintes pour la table `devis`
 --
 ALTER TABLE `devis`
-  ADD CONSTRAINT `fk_devis_client` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`),
-  ADD CONSTRAINT `fk_devis_factures` FOREIGN KEY (`idFacture`) REFERENCES `factures` (`idFacture`);
+  ADD CONSTRAINT `fk_devis_client` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`);
 
 --
 -- Contraintes pour la table `factures`
 --
 ALTER TABLE `factures`
+  ADD CONSTRAINT `fk_factures_devis` FOREIGN KEY (`idDevis`) REFERENCES `devis` (`idDevis`),
   ADD CONSTRAINT `fk_client_facture` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`);
 
 --
