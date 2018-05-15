@@ -1,0 +1,11 @@
+
+#conteneur 
+{
+	display : flex;
+}
+label
+{
+	display:block;
+	width :100px; 
+	float : left;
+}
