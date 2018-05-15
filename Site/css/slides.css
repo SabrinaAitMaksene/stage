@@ -1,0 +1,3 @@
+@font-face { font-family: leag; src: local('☺'), url("leag.woff") format('woff')}
+html {background-color: #a5e2ff;}
+ul {font-size: 10px; line-height: 10px}
