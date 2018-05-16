@@ -1,18 +1,15 @@
 <?php
- if (isset($_POST['envoiD']))
- {
- 	$numD= htmlentities(trim($_POST['numD']));
- 	$dateD = htmlentities(trim($_POST['dateD']));
- 	$url = htmlentities(trim($_POST['url']));
- 	$NC = htmlentities(trim($_POST['NC']));
- 	if ($numD&&$dateD&&$url&&$NC)
+ 	try
  	{
- 		$connect=mysql_connect('localhost','root','') or die('error');
- 		mysql_select_db('sylvainard');
- 		$query = mysql_query("INSERT INTO devis VALUES('',$numD,$dateD,'$url',$NC) ");
- 		die("Devis créé, <a href ='ajoutLigne.php' >veuillez ajouter des lignes </a> ");
- 	}else echo"veuillez renseigner tous les champs"; 
- }
+ 		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
+	 }
+	 catch (Exception $e)
+	 {
+	 	die('erreur :'.$e->getMessage());
+	 }
+ 	$requete = $bdd->prepare('INSERT INTO devis(numeroDevis,dateDevis,urlDevis,numeroCl,idClient) VALUES(?, ?, ?, ?, ?)');
+ 	$requete->execute(array($_POST['numeroDevis'],$_POST['dateDevis'],$_POST['urlDevis'],$_POST['numeroCl'],$_POST['idClient']));
+ 	echo'devis ajouté ';
 ?>
 <html>
 	<head>
@@ -24,25 +21,29 @@
 		<h2>Remplir le devis </h2>
 		<div id = "conteneur">
 			<div id ="devis">
-				<form  method ="POST" action ="remplirdevis.php">
+				<form  method ="post" action ="remplirdevis.php">
 					<p>
-						<label for="numD">Numero devis </label>
-						<input type ="number" min ="0" name="numD">
+						<label for="numeroDevis">Numero devis </label>
+						<input type ="number" min ="0" name="numeroDevis" id ="numeroDevis"required>
 					</p>
 					<p>
-						<label for="dateD">Date du devis </label>
-						<input type ="date"  name="dateD">
+						<label for="dateDevis">Date du devis </label>
+						<input type ="date"  name="dateDevis"  id ="dateDevis"required>
 					</p>
 					<p>
-						<label for="url">Url Devis  </label>
-						<input type ="url"  name="url">
+						<label for="urlDevis">Url Devis  </label>
+						<input type ="url"  name="urlDevis" id="ulrDevis"required>
 					</p>
 					<p>
-						<label for="NC">Numéro client </label>
-						<input type ="number" min ="0"  name="NC">
+						<label for="numeroCL">Numéro client </label>
+						<input type ="number" min ="0"  name="numeroCL" id ="numeroCL"required>
 					</p>
 					<p>
-						<input type ="submit" value ="ajouter un devis" name ="envoiD">
+						<label for="idClient">id  client </label>
+						<input type ="number" min ="0"  name="idClient" id ="idClient"required>
+					</p>
+					<p>
+						<input type ="submit" value ="ajouter un devis" >
 					</p>
 				</form>
 			</div>
