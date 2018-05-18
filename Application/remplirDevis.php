@@ -7,6 +7,7 @@
 	 {
 	 	die('erreur :'.$e->getMessage());
 	 }
+	 $bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
  	
  	if (isset ($_POST['submit']))
  	{
@@ -16,6 +17,7 @@
  		 $urlDevis=$_POST['urlDevis'];
  		 $numeroCL=$_POST['numeroCL'];
  		 $idClient=$_POST['idClient'];
+
  	
 	 	 $requete->execute(array(
 	 		'numeroDevis'=>$numeroDevis,
@@ -24,8 +26,12 @@
 	 		'numeroCL'=>$numeroCL,
 	 		'idClient'=>$idClient
 	 	 ));
+	 	 $response = $bdd->query('SELECT idDevis FROM devis WHERE  numeroDevis ="'.$numeroDevis.'"' );
+ 		 $donnees= $response->fetch();
+ 		 global $idDevis ;
+ 		 $idDevis= $donnees['idDevis'];
 	 		echo'devis ajouté ';
- 	}
+ 	
 
  	if (isset ($_POST['envoiL']))
  	{
@@ -33,12 +39,6 @@
  		 $descriptionD=$_POST['descriptionD'];
  		 $quantiteD=$_POST['quantiteD'];
  		 $prixUnitaireD=$_POST['prixUnitaireD'];
- 		 $response = $bdd->query('SELECT idDevis FROM devis where  numeroDevis == $numeroDevis');
- 		 $donnees = $response->fetch();
- 		 $idDevis= $donnees['idDevis'];
- 		 $response->closeCursor();
- 		 
-
  		$requete = $bdd->prepare('INSERT INTO lignedevis(referenceD,descriptionD,quantiteD,prixUnitaireD,idDevis) VALUES(:referenceD, :descriptionD, :quantiteD, :prixUnitaireD, :idDevis)');
  		
  	
@@ -47,10 +47,11 @@
  		'descriptionD'=>$descriptionD,
  		'quantiteD'=>$quantiteD,
  		'prixUnitaireD'=>$prixUnitaireD,
- 		'idDevis'=>$idDevis
+ 		'idDevis'=>$GLOBALS['idDevis']
  		));
- 		echo'devis ajouté ';
+ 		echo'ligne ajouté ';
  	}
+ }
 ?>
 <html>
 	<head>

@@ -1,0 +1,114 @@
+#infoProp
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#devis
+{
+	border: thick;
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#client
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#intro
+{
+	border: thick black solid; 
+  	height: 30px; 
+  	overflow: auto;
+
+	top:200px;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+
+
+}
+#contenu
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#tva
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#montant
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+#lA
+{
+	position:relative;
+	top:;
+	left:;
+	right:;
+	bottom: ;
+	background-color: ;
+	width:;
+	height: ;
+
+}
+td, th{
+	border : 1px solid black;
+}
+th {
+	background-color: grey;
+}
+table{
+	border-collapse: collapse;
+}
+
+footer p 
+{
+	text-align: center;
+}
