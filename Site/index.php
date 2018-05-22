@@ -24,7 +24,7 @@
     <br><br><br>
 	  <div id ="pds"> <h1> Présentation</h1> </div>
     <hr width=50%>
-    <div id="des">
+    <div id="desp">
       <p> Bienvenu sur le site de Sylvain ARD</p><br>
       <P>Sylvain Ard est un entrepreneur freelance qui réalise des sites web et des logiciels Delphi </P>   
     </div>

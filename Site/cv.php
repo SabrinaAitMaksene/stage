@@ -18,7 +18,7 @@
     <br><br><br>
     <ul id="menu">
       <center>
-        <li><a href="site.php">Accueil</a></a></li>
+        <li><a href="index.php">Accueil</a></a></li>
         <li><a href="cv.php">Curriculum vitae</a></a></li>
         <li><a href="attestations.php">Mes attestations</a></a></li>
         <li><a href="realisation.php">Mes réalisations</a></a></li>
@@ -128,17 +128,6 @@
         </section>
       </div>
     </div>
-	  <hr width=50%>
-    <footer>
-      <br/>
-      <h3>Nous Contacter</h3>  
-      <div id="footer">
-        <img src="tel.png" width="3%" height="3%" />
-        <p>07.78.38.09.91</p>
-        <img src="mail.png" width="3%" height="3%" />
-        <p>sylvain.ard@gmail.com</p>
-      </div>
-    </footer>
  </body>
  <script>
     document.addEventListener('DOMContentLoaded', function () {

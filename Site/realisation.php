@@ -15,7 +15,7 @@
     <br><br><br>
     <ul id="menu">
       <center>
-        <li><a href="site.php">Accueil</a></a></li>
+        <li><a href="index.php">Accueil</a></a></li>
         <li><a href="cv.php">Curriculum vitae</a></a></li>
         <li><a href="attestations.php">Mes attestations</a></a></li>
         <li><a href="realisation.php">Mes réalisations</a></a></li>
@@ -49,7 +49,7 @@
     <br></br>
     <footer>
       <br/>
-      <h3>Nous Contacter</h3>  
+      <h3>Me Contacter</h3>  
       <div id="footer">
         <img src="image/tel.png" width="3%" height="3%" />
         <p>07.78.38.09.91</p>
