@@ -12,7 +12,6 @@
     <div id="bloc_page">
       <header>
         <div id="titre_principal"> <H1> Curriculum vitae </H1></div>
-        <div id ="cvDownload"><p><a href="CV_SYLVAIN_ARD.pdf">Télécharger le cv </a></p></div>
       </header>
     </div>
     <br><br><br>
@@ -22,6 +21,7 @@
         <li><a href="cv.php">Curriculum vitae</a></a></li>
         <li><a href="attestations.php">Mes attestations</a></a></li>
         <li><a href="realisation.php">Mes réalisations</a></a></li>
+        <li><a href="CV_SYLVAIN_ARD.pdf">Télécharger le cv </a> </li>
       </center>
     </ul>
     <div class = "reveal">

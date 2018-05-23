@@ -15,7 +15,7 @@
     <br><br><br>
     <ul id="menu">
       <center>
-        <li><a href="site.php">Accueil</a></a></li>
+        <li><a href="index.php">Accueil</a></a></li>
         <li><a href="cv.php">Curriculum vitae</a></a></li>
         <li><a href="attestations.php">Mes attestations</a></a></li>
         <li><a href="realisation.php">Mes réalisations</a></a></li>

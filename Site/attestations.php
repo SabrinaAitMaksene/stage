@@ -22,7 +22,7 @@
       </center>
     </ul>
     <br><br><br>
-    <div id ="pds"> <h1> Mes attestations: </h1> </div>
+    <div id ="pds"> <h1> Mes attestations : </h1> </div>
     <hr width=50%>
     <div id="des">
       <h3>Liste des liens </h3>

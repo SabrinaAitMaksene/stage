@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title> Sylvain ARD </title>
     <link rel="stylesheet" href="devis.css">
+     <script type ="text/javasciprt" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
  </head>
  <body>
+
+
  	<div id ="infoProp" >
  		<p>
 	 		Tel: -portable: 
@@ -42,8 +45,54 @@
  	
 
  	<div id = "contenu">
-
+ 		<table>
+ 			<tr>
+ 				<th>Référence</th>
+ 				<th>Description</th>
+ 				<th>Quantité</th>
+ 				<th>Prix Unitaire</th>
+ 				<th>Total</th>
+ 			</tr>
+ 		</table>
  	</div>
+ 	<div id = "resultat"></div>
+ 	<scrip>
+ 		var nbligne = 1;
+
+	function nouvelleligne(nbligne){
+
+		return '<tr name="'+ nbligne +'" onclick="ajouterligne($(this));">' +
+				'<td>'+ nbligne +'</td>' +
+				'<td></td>' +
+				'<td></td>' +
+				'<td></td>' +
+			'</tr>';
+	}
+	
+	// on creé la première ligne
+		var nouvelle_ligne = nouvelleligne(nbligne);
+		$(nouvelle_ligne).prependTo("#tableau");
+
+	// On affiche le nombre de ligne
+	$("#result").html("nb ligne = " + nbligne);
+
+
+	function ajouterligne(ligne){
+
+		// Si c'est la derière ligne	
+		if(ligne.attr('name') == nbligne){
+		
+			// On insert la nouvelle ligne
+			nbligne ++;
+			var nouvelle_ligne = nouvelleligne(nbligne);
+			$(nouvelle_ligne).insertAfter(ligne);
+		
+			// on change la variable nbligne et on l'affiche 
+			$("#result").html("nb ligne = " + nbligne);
+		}
+	}
+
+ 	</scrip>
  	<div id = "tva">
  		<p>TVA non applicable, ar-293-B du CGI</p>
  	</div>
