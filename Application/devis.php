@@ -8,35 +8,16 @@
 	 	die('erreur :'.$e->getMessage());
 	 }
 
-	  $sql="SELECT  prenom FROM proprietaire" ;
+	  $sql="SELECT  * FROM proprietaire" ;
 	  $response = $bdd->query( $sql);
  	  $donnees= $response->fetch();
- 	  $prenom= $donnees['prenom'];
-	  $sql2="SELECT  nom FROM proprietaire" ;
-	  $response2 = $bdd->query( $sql2);
- 		 $donnees= $response->fetch();
+ 	  	 $prenom= $donnees['prenom'];
  		 $nom= $donnees['nom'];
-	  $sql3="SELECT adresse FROM proprietaire" ;
-	  $response3 = $bdd->query( $sql3);
- 		 $donnees= $response->fetch();
  		 $adresse= $donnees['adresse'];
-	  $sql4="SELECT  numeroFixe FROM proprietaire" ;
-	  $response4 = $bdd->query( $sql4);
- 		 $donnees= $response->fetch();
  		 $numeroFixe= $donnees['numeroFixe'];
-	  $sql5="SELECT numeroPortable FROM proprietaire";
-	  $response5 = $bdd->query( $sql5);
- 		 $donnees= $response->fetch();
  		 $numeroPortable= $donnees['numeroPortable'];
-	  $sql6="SELECT  adresseMail FROM proprietaire";
-	  $response6 = $bdd->query( $sql6);
- 		 $donnees= $response->fetch();
  		 $adresseMail= $donnees['adresseMail'];
-	  $sql7="SELECT  Siret FROM proprietaire" ;
- 		 $response7 = $bdd->query( $sql7);
- 		 $donnees= $response->fetch();
  		 $Siret= $donnees['Siret'];
- 		 echo $nom;
  ?>
 <html>
  <head>
@@ -67,11 +48,11 @@
 	 	<div id ="infoProp" >
 	 		<p>
 	 			<?php echo $nom." ".$prenom?><br>
-		 		Tel:echo $ -portable: 
+		 		Tel:<?php echo $numeroFixe ?>-portable: <?php echo $numeroPortable?>
 		 		<br>
-		 		Email:
+		 		Email:<?php echo $adresseMail?>
 		 		</br>
-		 		SIRET: 
+		 		SIRET: <?php echo $Siret?>
 	 		</p> 
 	 	</div>
 	 	<div id ="client">

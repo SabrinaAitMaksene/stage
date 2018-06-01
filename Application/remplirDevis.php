@@ -24,7 +24,7 @@
 	 		'numeroCL'=>$numeroCL,
 	 		'idClient'=>$idClient
 	 	 ));
-	 	 header("Location:ajoutLdevis.php?nd=".$numeroDevis);
+	 	 header("Location:ajoutLdevis.php?nd=".$numeroDevis."ncl=".$numeroCL);
 	 }
 	 	
 ?>
@@ -46,6 +46,7 @@
 						<label for="dateDevis">Date du devis </label>
 						<input type ="date"  name="dateDevis"  id ="dateDevis"required>
 					</p>
+					
 					<p>
 						<label for="numeroCL">Numéro client </label>
 						<input type ="number" min ="0"  name="numeroCL" id ="numeroCL"required>

@@ -8,6 +8,8 @@
 	 	die('erreur :'.$e->getMessage());
 	 }
  	$ndevis= $_GET['nd'];
+ 	$ncli= $_GET['ncl'];
+ 	echo $ncli;
  	if (isset ($_POST['envoiL']))
  	{
  		 $sql="SELECT idDevis FROM devis WHERE  numeroDevis = $ndevis";
