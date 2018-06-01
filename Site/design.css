@@ -7,9 +7,9 @@
 }
 #slide
 {
-	height: 40em;
-	width: 180em;
-    -webkit-animation:run 16s infinite;
+	height: 100%;
+	width: 500em;
+    -webkit-animation:run 5s infinite;
 }
 
 #slide img

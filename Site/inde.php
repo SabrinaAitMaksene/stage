@@ -29,18 +29,17 @@
       <P>Sylvain Ard est un entrepreneur freelance qui réalise des sites web et des logiciels Delphi </P>   
     </div>
 	  <br><br>
+    <div id=centrer>
       <div id="main" >
         <div id="slide">
           <a href="http://marieange.ard.free.fr/" target="_blank"><img src="image/slide1.JPG" width="100%" height="70%"/></a>
           <a href="http://mycomons.be/" target="_blank"><img src="image/slide2.JPG" width="100%" height="70%" /></a>
-          <a href="http://www.lichensmaritimes.org/" target="_blank"><img src="image/slide3.JPG" width="100%" height="70%"/></a>
-          <a href="" target="_blank"><img src="image/slide4.JPG" width="100%" height="70%"/></a>
-          <a href="" target="_blank"><img src="image/champi.JPG" width="100%" height="70%"/></a>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
-          <br>
+          <a href="http://www.lichensmaritimes.org/" target="_blank"><img src="image/slide3.JPG"width="100%" height="70%"/></a>
+          <a href="" target="_blank"><img src="image/slide4.JPG"width="100%" height="70%"/></a>
+          <a href="" target="_blank"><img src="image/champi.JPG"width="100%" height="70%"/></a>
         </div>
       </div>
+    </div>
     <footer>
       <br/me>
       <h3> Me Contacter</h3>  
