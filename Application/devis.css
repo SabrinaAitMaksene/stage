@@ -17,7 +17,7 @@
 	right:0px;
 	background-color: aqua ;
 	width:400px ;
-	height: 75px;
+	height: 100px;
 
 }
 #devis
@@ -91,13 +91,13 @@
 #tva
 {
 	position:relative;
-	top:;
+	margin-top:25px;
 	left:;
 	right:;
 	bottom: ;
-	background-color: ;
-	width:;
-	height: ;
+	background-color: cyan ;
+	width: 300px;
+	height:50px ;
 
 }
 #montant

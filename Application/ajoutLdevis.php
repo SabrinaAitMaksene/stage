@@ -8,8 +8,6 @@
 	 	die('erreur :'.$e->getMessage());
 	 }
  	$ndevis= $_GET['nd'];
- 	$ncli= $_GET['ncl'];
- 	echo $ncli;
  	if (isset ($_POST['envoiL']))
  	{
  		 $sql="SELECT idDevis FROM devis WHERE  numeroDevis = $ndevis";
@@ -41,12 +39,26 @@
 	<head>
 		<meta charset="utf-8">
     	<title> Sylvain ARD </title>
-    	<link rel="stylesheet" href="remplirdevis.css">
+    	<link rel="stylesheet" href="ajoutClient.css">
 	</head>
 	<body>
-		<h2>Remplir le devis </h2>
-		<div id ="ligneD">
+		<div id="bloc_page">
+      <header>
+        <div id="titre_principal"> <H1> Remplir le devis </H1></div>
+      </header>
+    </div>
+    <br><br><br>
+    <ul id="menu">
+      <center>
+        <li><a href="ajoutClient.php">Ajouter un client</a></li>
+        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
+        <li><a href="attestations.php">afficher la liste des devis </a></li>
+      </center>
+    </ul>
+    <br><br><br>
+		<div id ="formulaire">
 			<form  method ="POST" action ="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])."?nd=".$_GET['nd'];?>">
+				<br><br>
 				<p>
 
 					<label for="reference">Reference </label>

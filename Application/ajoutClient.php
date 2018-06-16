@@ -23,7 +23,7 @@
 			'prenomClient'=>$prenomClient,
 			'adresseClient'=>$adresseClient
 		 ));
-
+		echo'client ajouté';
 	}
 ?>
 
@@ -31,12 +31,30 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Ajouter un client</title>
-		<link rel="stylesheet" href ="remplirdevis.css"  >
+		<link rel="stylesheet" href ="ajoutClient.css"  >
 	</head>
 	<body>
-		<div id ="ajoutcl">
+ <div id="bloc_page">
+      <header>
+        <div id="titre_principal"> <H1> Ajouter un client</H1></div>
+      </header>
+    </div>
+    <br><br><br>
+    <ul id="menu">
+      <center>
+        <li><a href="inde.php">Accueil </a></li>
+        <li><a href="ajoutClient.php">Ajouter un client</a></li>
+        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
+        <li><a href="afficherD.php">afficher la liste des devis </a></li>
+      </center>
+    </ul>
+    <br><br><br>
+   	<div id ="formulaire">
 			<form method ="POST" action ="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+				</br>
+				</br>
 				<p>
+
 					<label for ="numero">Numero client</label>
 					<input type ="number" min = "0"  name="numero" id = "numero">
 				</p>

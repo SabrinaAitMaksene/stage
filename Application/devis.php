@@ -2,15 +2,16 @@
  	try
  	{
  		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
-	 }
-	 catch (Exception $e)
-	 {
-	 	die('erreur :'.$e->getMessage());
-	 }
+ 		$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	}
+	catch (Exception $e)
+	{
+		die('erreur :'.$e->getMessage());
+	}
 
-	  $sql="SELECT  * FROM proprietaire" ;
-	  $response = $bdd->query( $sql);
- 	  $donnees= $response->fetch();
+	 $sql="SELECT  * FROM proprietaire" ;
+	 $response = $bdd->query( $sql);
+ 	 $donnees= $response->fetch();
  	  	 $prenom= $donnees['prenom'];
  		 $nom= $donnees['nom'];
  		 $adresse= $donnees['adresse'];
@@ -18,6 +19,18 @@
  		 $numeroPortable= $donnees['numeroPortable'];
  		 $adresseMail= $donnees['adresseMail'];
  		 $Siret= $donnees['Siret'];
+ 		 $response->closeCursor();	
+ 	 function Total($pu,$q)
+ 	 {
+ 	 	$total = $pu*$q;
+ 	 	return $total;
+ 	 }
+ 	 function Somme($a){
+ 	 	$somme = 0;
+ 	 	$somme = $somme+$a;
+ 	 	return $somme;
+ 	 }
+
  ?>
 <html>
  <head>
@@ -72,6 +85,24 @@
  				<th>Prix Unitaire</th>
  				<th>Total</th>
  			</tr>
+ 			<?php 
+ 				$ndv=$_GET['nd'];
+ 				$sql2= "SELECT * from lignedevis where idDevis= (SELECT  idDevis FROM devis where numeroDevis=$ndv)";
+ 				$response= $bdd->query($sql2);
+ 				while($donnees = $response->fetch())
+ 				{
+ 			?>
+ 			<tr>
+ 				<td><?php echo $donnees['referenceD']; ?></td>
+ 				<td><?php echo $donnees['descriptionD']; ?></td>
+ 				<td><?php echo $donnees['quantiteD']; ?></td>
+ 				<td><?php echo $donnees['prixUnitaireD']; ?></td>
+ 				<td><?php echo Total($donnees['prixUnitaireD'],$donnees['quantiteD'])?> </td>
+ 			</tr>
+ 			<?php
+ 				}
+ 				$response->closeCursor();  
+ 			?>
  		</table>
  	</div>
  	<div id ="bottom">
