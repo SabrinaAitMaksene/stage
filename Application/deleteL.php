@@ -9,7 +9,8 @@ try
     die('erreur :'.$e->getMessage());
   }
   $id = $_GET['id'];
-  $sql = "  DELETE from devis where idDevis = :id";
+  echo $id;
+  $sql = "  DELETE from lignedevis where idLdevis = :id";
   $requete = $bdd ->prepare($sql);
   $array = array(
   	'id'=> $id

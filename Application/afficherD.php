@@ -38,14 +38,17 @@ try
     <br><br><br>
     
           <div class="searchTable">
-          <input type="text" id="searchBar" onkeyup="search()">
+          <input type="text" id="searchBar" onkeyup="search()" placeholder="Filtrer par numero du devis">
+          <input type="text" id="searchBar1" onkeyup="search1()"placeholder="Filtrer par numero du client ">
             <table id="pageTable">
                 <tr class="header">
                     <th >Numéro du devis</th>
                      <th >Nom du devis</th>
                     <th >Date du devis</th>
                     <th >Numero du client</th>
-                    <th>Modifier</th>
+                    <th>Afficher </th>
+                    <th>Generer</th>
+                    <th>Modifier</th> 
                     <th>Supprimer</th>
                 </tr>
                 
@@ -58,6 +61,8 @@ try
                          <td><?php echo $donnees['nomDevis']; ?></td>
                          <td><?php echo $donnees['dateDevis']; ?></td>
                          <td><?php echo $donnees['numeroCL']; ?></td>
+                         <?php echo "<td>".'<a href="show.php?id='.$donnees['idDevis'].'" id="show" class="btn"><i class="far fa-eye"></i></a></td>'?>
+                         <?php echo "<td>".'<a href="devis.php?id='.$donnees['idDevis'].'" id="generate" class="btn"><i class="fab fa-creative-commons-share"></i></a></td>'?>
                          <?php echo "<td>".'<a href="edit.php?id='.$donnees['idDevis'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
                          <?php echo "<td>".'<a href="delete.php?id='.$donnees['idDevis'].'" id="del" class="btn"><i class="fas fa-trash"></i></a></td>'?>
                        </tr>
@@ -72,6 +77,26 @@ try
                 var input, filter, table, tr, td, i;
 
                 input = document.getElementById("searchBar");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("pageTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0] ;
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+            function search1() {
+                var input, filter, table, tr, td, i;
+
+                input = document.getElementById("searchBar1");
                 filter = input.value.toUpperCase();
                 table = document.getElementById("pageTable");
                 tr = table.getElementsByTagName("tr");

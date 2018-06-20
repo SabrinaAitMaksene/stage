@@ -1,5 +1,10 @@
 <?php
- 	try
+ 	session_start();
+	if(isset($_GET['id'])) $_SESSION['recupID'] = $_GET['id'];
+
+ 	if (isset ($_POST['submit']))
+ 	{
+ 		try
  	{
  		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
 	 }
@@ -8,11 +13,13 @@
 	 	die('erreur :'.$e->getMessage());
 	 }
 	 $bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
- 	 $id = $_GET['id'];
- 	 echo $id;
- 	if (isset ($_POST['submit']))
- 	{
- 		 $requete = $bdd->prepare('INSERT INTO devis(numeroDevis,dateDevis,numeroCL,idClient) VALUES(:numeroDevis, :dateDevis, :numeroCL, :idClient)');
+ 		 $sql ="UPDATE devis SET
+ 		 	 numeroDevis = :numeroDevis,
+ 		 	 dateDevis = :dateDevis,
+ 		   	 numeroCL = :numeroCL,
+ 		     idClient = :idClient
+ 		     where idDevis= :id ";
+ 		 $requete = $bdd->prepare($sql);
  		 $numeroDevis=$_POST['numeroDevis'];
  		 $dateDevis=$_POST['dateDevis'];
  		 $numeroCL=$_POST['numeroCL'];
@@ -23,9 +30,10 @@
 	 		'numeroDevis'=>$numeroDevis,
 	 		'dateDevis'=>$dateDevis,
 	 		'numeroCL'=>$numeroCL,
-	 		'idClient'=>$idClient
+	 		'idClient'=>$idClient,
+	 		'id' => $_SESSION['recupID']
 	 	 ));
-	 	 header("Location:ajoutLdevis.php?nd=".$numeroDevis);
+	 	 echo "Devis modifié";
 	 }
 	 	
 ?>

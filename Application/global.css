@@ -9,6 +9,12 @@
     padding: 8px 0 8px 15px;
     margin-bottom: 12px;
 }
+#searchBar1 {
+    width: 100%;
+    font: normal 16px 'Bitter', sans-serif;
+    padding: 8px 0 8px 15px;
+    margin-bottom: 12px;
+}
 
 #pageTable {
     border-collapse: collapse;
@@ -20,7 +26,7 @@
 
 #pageTable th, #pageTable td {
     text-align: left;
-    padding: 15px;
+    padding: 12px;
 }
 
 #pageTable tr {
@@ -33,6 +39,7 @@
 }
 
 #pageTable tr.header, #pageTable tr:hover {
+    width :80%;
     background-color:#405281;
 } 
 
@@ -57,8 +64,8 @@
 }
 #add:hover {background-color: rgb(25, 77, 97);}
 
-#edit {background-color: #223052;}
+ #del,#generate {background-color: #223052;}
 
+#edit, #show {background-color: #dd7979;}
 
-#del {background-color: #dd7979;}
 
