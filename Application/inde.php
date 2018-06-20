@@ -15,6 +15,8 @@ try
     <meta charset="utf-8">
     <title> Sylvain ARD </title>
     <link rel="stylesheet" href="designApp.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
   
   <body>
@@ -34,27 +36,55 @@ try
       </center>
     </ul>
     <br><br><br>
-    <div id = "contenu">
-    <table>
-      <tr>
-        <th>Nom</th>
-        <th>Prenom</th>
-      </tr>
-      <?php 
-        $sql2= "SELECT * from client ";
-        $response= $bdd->query($sql2);
-        while($donnees = $response->fetch())
-        {
-      ?>
-      <tr>
-        <td><?php echo $donnees['nomClient']; ?></td>
-        <td><?php echo $donnees['prenomClient']; ?></td>
-      </tr>
-      <?php
-        }
-        $response->closeCursor();  
-      ?>
-    </table>
+    
+          <div class="searchTable">
+          <input type="text" id="searchBar" onkeyup="search()">
+            <table id="pageTable">
+                <tr class="header">
+                    <th >Nom du client</th>
+                    <th >Prenom du client</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+                
+                <?php
+                 $sql2= "SELECT * from client ";
+                 $response= $bdd->query($sql2);
+                while ($donnees = $response->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <tr>
+                         <td><?php echo $donnees['nomClient']; ?></td>
+                         <td><?php echo $donnees['prenomClient']; ?></td>
+                         <?php echo "<td>".'<a href="edit.php?id='.$donnees['idClient'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
+                         <?php echo "<td>".'<a href="delete.php?id='.$donnees['idClient'].'" id="del" class="btn"><i class="fas fa-trash"></i></a></td>'?>
+                       </tr>
+                <?php
+                }
+                $response->closeCursor();
+                ?>
+            </table>
+          </div>
+  <script>
+            function search() {
+                var input, filter, table, tr, td, i;
+
+                input = document.getElementById("searchBar");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("pageTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
   </div>
  </body>
 </html>   

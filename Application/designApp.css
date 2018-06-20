@@ -75,12 +75,3 @@ body
     padding-bottom: 10px;
     padding-top: 20px;
 }
-td, th{
-    border : 1px solid black;
-}
-th {
-    background-color: grey;
-}
-table{
-    border-collapse: collapse;
-}

@@ -1,0 +1,64 @@
+.searchTable {
+ margin: 0 auto;
+  width: 80%;
+}
+
+#searchBar {
+    width: 100%;
+    font: normal 16px 'Bitter', sans-serif;
+    padding: 8px 0 8px 15px;
+    margin-bottom: 12px;
+}
+
+#pageTable {
+    border-collapse: collapse;
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    font: normal 20px 'Bitter', sans-serif;
+}
+
+#pageTable th, #pageTable td {
+    text-align: left;
+    padding: 15px;
+}
+
+#pageTable tr {
+    background-color: #d3a9a9;
+    border-bottom: 1px solid #ddd;
+}
+
+#pageTable tr:nth-child(even) {
+    background-color: #cadfea;
+}
+
+#pageTable tr.header, #pageTable tr:hover {
+    background-color:#405281;
+} 
+
+.btn {
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+}
+
+#add { 
+    background-color: #2A88AD;
+    display: block;
+    margin: 0 auto;
+    width: 5em;
+    position: absolute;
+    right: 3%;
+}
+#add:hover {background-color: rgb(25, 77, 97);}
+
+#edit {background-color: #223052;}
+
+
+#del {background-color: #dd7979;}
+
