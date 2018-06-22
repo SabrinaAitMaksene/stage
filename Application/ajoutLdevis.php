@@ -28,11 +28,7 @@
  		 'prixUnitaireD'=>$prixUnitaireD,
  		 'idDevis'=>$idDevis
  		 ));
- 		 echo'ligne ajouté ';
- 	}
- 	if(isset($_POST['generer']))
- 	{
- 		header("Location:devis.php?nd=".$ndevis);
+ 		 echo'ligne ajoutée ';
  	}
 ?>
 <html>
@@ -50,9 +46,10 @@
     <br><br><br>
     <ul id="menu">
       <center>
-        <li><a href="ajoutClient.php">Ajouter un client</a></li>
-        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
-        <li><a href="attestations.php">afficher la liste des devis </a></li>
+        <li><a href="inde.php">Accueil </a></li>
+		<li><a href="ajoutClient.php">Ajouter un client</a></li>
+		<li><a href="ajoutDevis.php">Ajouter un devis</a></li>
+		<li><a href="afficherD.php">afficher la liste des devis </a></li>
       </center>
     </ul>
     <br><br><br>
@@ -80,11 +77,6 @@
 					<input type = "submit" value="Ajouter un element " id ="envoiL" name="envoiL">
 				</p>
 			</form>	
-			<form  method ="POST" action ="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])."?nd=".$_GET['nd'];?>">
-			 	<p>
-					<input type ="submit" value ="generer" name = "generer" id="generer">
-				</p>
-			</form>
 		</div>
 	</body>
 </html>

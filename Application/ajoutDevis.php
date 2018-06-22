@@ -28,11 +28,13 @@
 	 }
 	 	
 ?>
+
 <html>
 	<head>
 		<meta charset="utf-8">
     	<title> Sylvain ARD </title>
     	<link rel="stylesheet" href="ajoutClient.css">
+    	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	</head>
 	<body>
 	<div id="bloc_page">
@@ -51,6 +53,22 @@
 		      </center>
    			 </ul>
    			 <br><br><br>
+			<div id ="devis">
+				<form method="post" action="reception.php" enctype="multipart/form-data">
+					 <?php echo '<i class="fas fa-upload"></i>';?> 
+					 <input type ="file" name ="devis" id ="devis">
+					 <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+					 <input type="submit" value="envoyer" name="upload_submit" id="upload_submit" >
+				</form>	
+			</div>
+			<div id ="facture">
+				<form method="post" action="receptionF.php" enctype="multipart/form-data">
+					 <?php echo '<i class="fas fa-upload"></i>';?> 
+					 <input type ="file" name ="facture" id="facture">
+					 <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+					 <input type="submit" value="envoyer" name="upload_submit" id="upload_submit" >
+				</form>
+			</div>
 			<div id ="formulaire">
 				<form  method ="POST" action ="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 					</br></br>

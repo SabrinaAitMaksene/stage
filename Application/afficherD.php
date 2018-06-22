@@ -62,7 +62,7 @@ try
                          <td><?php echo $donnees['dateDevis']; ?></td>
                          <td><?php echo $donnees['numeroCL']; ?></td>
                          <?php echo "<td>".'<a href="show.php?id='.$donnees['idDevis'].'" id="show" class="btn"><i class="far fa-eye"></i></a></td>'?>
-                         <?php echo "<td>".'<a href="devis.php?id='.$donnees['idDevis'].'" id="generate" class="btn"><i class="fab fa-creative-commons-share"></i></a></td>'?>
+                         <?php echo "<td>".'<a href="devis.php?nd='.$donnees['numeroDevis'].'" id="generate" class="btn"><i class="fab fa-creative-commons-share"></i></a></td>'?>
                          <?php echo "<td>".'<a href="edit.php?id='.$donnees['idDevis'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
                          <?php echo "<td>".'<a href="delete.php?id='.$donnees['idDevis'].'" id="del" class="btn"><i class="fas fa-trash"></i></a></td>'?>
                        </tr>

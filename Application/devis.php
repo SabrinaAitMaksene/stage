@@ -86,8 +86,8 @@
  				<th>Total</th>
  			</tr>
  			<?php 
- 				$id=$_GET['id'];
- 				$sql2= "SELECT * from lignedevis where idDevis= :id";
+ 				$ndv=$_GET['nd'];
+ 				$sql2= "SELECT * from lignedevis where idDevis= (SELECT  idDevis FROM devis where numeroDevis=$ndv)";
  				$response= $bdd->query($sql2);
  				while($donnees = $response->fetch())
  				{

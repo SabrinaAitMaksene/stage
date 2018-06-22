@@ -33,8 +33,8 @@
 	 		'idClient'=>$idClient,
 	 		'id' => $_SESSION['recupID']
 	 	 ));
-	 	 echo "Devis modifié";
 	 }
+	 header("Location: ./afficherD.php");
 	 	
 ?>
 <html>
@@ -83,6 +83,7 @@
 					<p>
 						<input type ="submit" value ="modifier" name = "submit" id="submit">
 					</p>
+
 				</form>
 			</div>
 	</body>
