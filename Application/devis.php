@@ -1,4 +1,6 @@
 <?php
+	require_once "html2pdf/html2pdf.class.php";
+	$pdf = new HTML2PDF("p","A4","fr");
  	try
  	{
  		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
@@ -36,6 +38,7 @@
  <head>
     <meta charset="utf-8">
     <title> Sylvain ARD </title>
+    <link rel="stylesheet" href="deviss.css">
     <link rel="stylesheet" href="devis.css">
  </head>
  <body>
