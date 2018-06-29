@@ -13,12 +13,16 @@
  	 $donnees= $response->fetch();
  	  	 $prenom= $donnees['prenom'];
  		 $nom= $donnees['nom'];
- 		 $adresse= $donnees['adresse'];
+ 		 $numMaison= $donnees['numMaison'];
+ 		 $rue= $donnees['rue'];
+ 		 $ville= $donnees['ville'];
+ 		 $Residence= $donnees['Residence'];
  		 $numeroFixe= $donnees['numeroFixe'];
  		 $numeroPortable= $donnees['numeroPortable'];
  		 $adresseMail= $donnees['adresseMail'];
  		 $Siret= $donnees['Siret'];
  		 $response->closeCursor();	
+
  	 function Total($pu,$q)
  	 {
  	 	$total = $pu*$q;

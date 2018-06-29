@@ -1,32 +1,43 @@
-<?php 
+<?php
+ 	session_start();
+	if(isset($_GET['id'])) $_SESSION['recupID'] = $_GET['id'];
 	try
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
-	}
-	catch(Exception $e)
-	{
-		die('erreur :' .$e->getMessage());
-	}
-	$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	if(isset($_POST['submit']))
-	{
-		
-		$numero=$_POST['numero'];
-		$nomClient=$_POST['nomClient'];
-		$prenomClient=$_POST['prenomClient'];
-		$adresseClient=$_POST['adresseClient'];
+ 	{
+ 		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
+	 }
+	 catch (Exception $e)
+	 {
+	 	die('erreur :'.$e->getMessage());
+	 }
 
-		$requete = $bdd->prepare('INSERT INTO client(numero,nomClient,prenomClient,adresseClient) VALUES(:numero, :nomClient, :prenomClient, :adresseClient)');
-		$requete ->execute(array(
-			'numero'=>$numero,
-			'nomClient'=>$nomClient,
-			'prenomClient'=>$prenomClient,
-			'adresseClient'=>$adresseClient
-		 ));
-		echo'client ajouté';
-	}
+ 	if (isset ($_POST['submit']))
+ 	{
+
+	 $bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+ 		 $sql ="UPDATE client SET
+ 		 	 numero = :numero,
+ 		 	 nomClient = :nomClient,
+ 		   	 prenomClient = :prenomClient,
+ 		     adresseClient = :adresseClient
+ 		     where idClient= :id ";
+ 		 $requete = $bdd->prepare($sql);
+ 		 $numero=$_POST['numero'];
+ 		 $nomClient=$_POST['nomClient'];
+ 		 $prenomClient=$_POST['prenomClient'];
+ 		 $adresseClient=$_POST['adresseClient'];
+
+ 	
+	 	 $requete->execute(array(
+	 		'numero'=>$numero,
+	 		'nomClient'=>$nomClient,
+	 		'prenomClient'=>$prenomClient,
+	 		'adresseClient'=>$adresseClient,
+	 		'id' => $_SESSION['recupID']
+	 	 ));
+	 }
+	
+	 	
 ?>
-
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -36,7 +47,7 @@
 	<body>
  <div id="bloc_page">
       <header>
-        <div id="titre_principal"> <H1> Ajouter un client</H1></div>
+        <div id="titre_principal"> <H1> Modifier un client</H1></div>
       </header>
     </div>
     <br><br><br>

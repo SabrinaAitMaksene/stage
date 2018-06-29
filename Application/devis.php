@@ -1,97 +1,88 @@
+<?php 
+	require_once"connexion.php";
+	ob_start();
+?>
 <?php
-	require_once "html2pdf/html2pdf.class.php";
-	$pdf = new HTML2PDF("p","A4","fr");
- 	try
- 	{
- 		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
- 		$bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	}
-	catch (Exception $e)
-	{
-		die('erreur :'.$e->getMessage());
-	}
+		 $nd= $_GET['nd'];
+         $sql2= "SELECT * from devis where numeroDevis= $nd ";
+         $response= $bdd->query($sql2);
+         $donnees= $response->fetch();
+         $ncl=$donnees['numeroCL'];
+         $response->closeCursor();
+?>
+<?php
 
-	 $sql="SELECT  * FROM proprietaire" ;
-	 $response = $bdd->query( $sql);
- 	 $donnees= $response->fetch();
- 	  	 $prenom= $donnees['prenom'];
- 		 $nom= $donnees['nom'];
- 		 $adresse= $donnees['adresse'];
- 		 $numeroFixe= $donnees['numeroFixe'];
- 		 $numeroPortable= $donnees['numeroPortable'];
- 		 $adresseMail= $donnees['adresseMail'];
- 		 $Siret= $donnees['Siret'];
- 		 $response->closeCursor();	
- 	 function Total($pu,$q)
- 	 {
- 	 	$total = $pu*$q;
- 	 	return $total;
- 	 }
- 	 function Somme($a){
- 	 	$somme = 0;
- 	 	$somme = $somme+$a;
- 	 	return $somme;
- 	 }
+?>
+<style type ="text/css">
+	table{ border-collapse: collapse; width:100%;color:#717375;font-size:12pt;font-family: helvetica; line-height: 6mm;}
+	strong{color:#000;}
+	em{font-size: 9pt;}
+	td.right{text-align:right;}
+	table.border td{border :1px solid #CFD1D2; padding:3mm 1mm;}
+	table.border th {border :1px solid #CFD1D2;background:black;color:white; font-size: 11pt; text-align:left;}
+	td.black {background:black;color:white; font-size: 11pt;}
+	td.nborder{border:none;}
+	h3{ text-align: center; font-size:8pt; }
+</style>
 
- ?>
-<html>
- <head>
-    <meta charset="utf-8">
-    <title> Sylvain ARD </title>
-    <link rel="stylesheet" href="deviss.css">
-    <link rel="stylesheet" href="devis.css">
- </head>
- <body>
- <div id ="bloc_page">
- 	<div id = "devis">
- 		<table>
- 			<tr>
- 				<th colspan="3">DEVIS</th>
- 			</tr>
- 			<tr>
- 				<th>N° devis <php? echo "".$_GET['nd'];?></th>
- 				<th>Date</th>
- 				<th>Code client</th>
- 			</tr>
- 			<tr>
- 				<td><?php echo $_GET['nd'];?></td>
- 				<td>21/07/2016</td>
- 				<td>CL0024</td>
- 			</tr>
- 		</table>
- 	</div>
- 	<div id="info">
-	 	<div id ="infoProp" >
-	 		<p>
-	 			<?php echo $nom." ".$prenom?><br>
-		 		Tel:<?php echo $numeroFixe ?>-portable: <?php echo $numeroPortable?>
-		 		<br>
-		 		Email:<?php echo $adresseMail?>
-		 		</br>
-		 		SIRET: <?php echo $Siret?>
-	 		</p> 
-	 	</div>
-	 	<div id ="client">
-	 		<p>Adresse :</p>
-	 	</div>
- 	</div>
- 	<div id = "intro">
- 		<p>Mode de paiement :
- 		<br>Date de validité :</p>
- 	</div>
- 	<div id = "contenu">
- 		<table>
- 			<tr>
- 				<th>Référence</th>
- 				<th>Description</th>
- 				<th>Quantité</th>
- 				<th>Prix Unitaire</th>
- 				<th>Total</th>
- 			</tr>
- 			<?php 
- 				$ndv=$_GET['nd'];
+<page backtop="20mm" backleft="10mm" backright="10mm" backbottom="30mm">
+	<page_footer>
+		<hr/>
+		<h3>Enreprise indivuduelle-SIREN : 800792434</h3>
+	</page_footer>
+	<table>
+		<tr>
+			<td style="width:30%"><h2>Devis <?php echo $_GET['nd'];?></h2></td>
+			<td style="width:30%"class="right">Emis le <?php echo date('d/m/Y');?></td>
+			<td style="width:30%"class="right">Code du client : <?php echo $ncl?></td>
+		</tr>
+	</table>
+	<table style="vertical-align:top;margin-top: 20mm;">
+		<tr>
+			<td style="width:70%;" > 
+				<?php echo $nom." ".$prenom?><br/>
+				<?php echo $numMaison ?>
+		 		<br/>
+		 		<?php echo $rue ?>
+		 		<br/>
+		 		<?php echo $Residence ?>
+		 		<br/>
+		 		<?php echo $ville ?>
+		 		<br/>
+		 		<strong>Tel:</strong><?php echo $numeroFixe ?>-portable: <?php echo $numeroPortable?>
+		 		<br/>
+		 		<strong>Email: </strong><?php echo $adresseMail?>
+		 		<br/>
+		 		<strong>SIRET:</strong> <?php echo $Siret?>
+		 	</td>
+		 	<td style="width:30%;">
+				<?php echo $nom." ".$prenom?><br/>
+		 		adresse :
+		 	</td>
+		</tr>
+	</table>
+	<br/><br/>
+	<table style="margin-top: 20mm;">
+		<tr> <td>Mode de paiement : </td> </tr>
+		<tr> <td>Date de validité : </td> </tr>
+
+	</table>
+	<table class="border" style="margin-top: 5mm;" >
+		<thead>
+			<tr>
+				<th style="width:11%">Reference</th>
+				<th style="width:56%">Description</th>
+				<th style="width:9%">Quantité</th>
+				<th style="width:12%">Prix Unitaire</th>
+				<th style="width:12%">Montant</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$ndv=$_GET['nd'];
  				$sql2= "SELECT * from lignedevis where idDevis= (SELECT  idDevis FROM devis where numeroDevis=$ndv)";
  				$response= $bdd->query($sql2);
+ 				$prixTotal=0;
  				while($donnees = $response->fetch())
  				{
  			?>
@@ -99,36 +90,43 @@
  				<td><?php echo $donnees['referenceD']; ?></td>
  				<td><?php echo $donnees['descriptionD']; ?></td>
  				<td><?php echo $donnees['quantiteD']; ?></td>
- 				<td><?php echo $donnees['prixUnitaireD']; ?></td>
- 				<td><?php echo Total($donnees['prixUnitaireD'],$donnees['quantiteD'])?> </td>
+ 				<td><?php echo number_format($donnees['prixUnitaireD'],2)."€"; ?></td>
+ 				<td><?php echo number_format(Total($donnees['prixUnitaireD'],$donnees['quantiteD']),2)."€"?> </td>
  			</tr>
  			<?php
+ 				$prixTotal+=Total($donnees['prixUnitaireD'],$donnees['quantiteD']);
  				}
  				$response->closeCursor();  
  			?>
- 		</table>
- 	</div>
- 	<div id ="bottom">
- 		<div id ="cl">
- 			<p>CL0016</p>
- 		</div>
-	 	<div id = "foot">
-		 	<div id = "tva">
-		 		<p>TVA non applicable, ar-293-B du CGI</p>
-		 	</div>
-		 	<div id = "montant">
-		 		<table> 
-		 			<th>Total</th>
-		 			<td> 420,00 euro   </td>
-		 		</table>
-		 	</div>
-		 	<div id ="lA">
-		 		<p> Cachet et signature précédés de BON POUR ACCORD </p>
-		 	</div>
-		 </div>
- 	</div>
- 	<hr width = "90%">
- 	<footer><P>Entreprise individuelle -SIREN : 800792434</P></footer>
- 	</div>
- </body>
-</html>
+ 			<tr>
+ 				<td style="padding:1mm;" class="nborder"colspan="3"></td>
+ 				<td style="padding:1mm;"class="black"> Total </td>
+ 				<td style="padding:1mm;"> <?php echo$prixTotal ;?>€</td>
+ 			</tr>
+		</tbody>
+	</table>
+	<table style="margin-top: 30mm; text-align: left;">
+		<tr>
+			<td class="nborder" style="width:35%"></td>
+			<td style="width:65%">Cachet et signature précédés de BON POUR ACCORD </td> 
+		</tr>
+	</table>
+	
+</page>
+
+<?php
+	$content= ob_get_clean();
+	require_once"html2pdf/html2pdf.class.php";
+	try
+	{
+
+		$pdf = new HTML2PDF('p','A4','fr');
+		$pdf->pdf->SetDisplayMode('fullpage');
+		$pdf-> writeHTML($content);
+		$pdf->Output('test.pdf');
+	}
+	catch(html2pdf_exception $e)
+	{
+		die($e);
+	}
+?>

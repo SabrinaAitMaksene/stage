@@ -1,10 +1,7 @@
 <?php
  	session_start();
 	if(isset($_GET['id'])) $_SESSION['recupID'] = $_GET['id'];
-
- 	if (isset ($_POST['submit']))
- 	{
- 		try
+	try
  	{
  		$bdd = new PDO('mysql:host=localhost;dbname=sylvainard;charset=utf8', 'root','');
 	 }
@@ -12,29 +9,39 @@
 	 {
 	 	die('erreur :'.$e->getMessage());
 	 }
+
+ 	if (isset ($_POST['submit']))
+ 	{
+
 	 $bdd->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
  		 $sql ="UPDATE devis SET
  		 	 numeroDevis = :numeroDevis,
+ 		 	 nomDevis = :nomDevis,
  		 	 dateDevis = :dateDevis,
  		   	 numeroCL = :numeroCL,
  		     idClient = :idClient
  		     where idDevis= :id ";
  		 $requete = $bdd->prepare($sql);
  		 $numeroDevis=$_POST['numeroDevis'];
+ 		 $nomDevis=$_POST['nomDevis'];
  		 $dateDevis=$_POST['dateDevis'];
  		 $numeroCL=$_POST['numeroCL'];
- 		 $idClient=$_POST['idClient'];
+ 		  $sql2= "SELECT  idClient from client where numero= $numeroCL ";
+         $response= $bdd->query($sql2);
+         $donnees= $response->fetch();
+         $idClient=$donnees['idClient'];
 
  	
 	 	 $requete->execute(array(
 	 		'numeroDevis'=>$numeroDevis,
+	 		'nomDevis'=>$nomDevis,
 	 		'dateDevis'=>$dateDevis,
 	 		'numeroCL'=>$numeroCL,
 	 		'idClient'=>$idClient,
 	 		'id' => $_SESSION['recupID']
 	 	 ));
 	 }
-	 header("Location: ./afficherD.php");
+	
 	 	
 ?>
 <html>
@@ -57,6 +64,7 @@
 		        <li><a href="ajoutClient.php">Ajouter un client</a></li>
 		        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
 		        <li><a href="afficherD.php">afficher la liste des devis </a></li>
+		        <li><a href="editP.php">propriétaire </a></li>
 		      </center>
    			 </ul>
    			 <br><br><br>
@@ -68,17 +76,28 @@
 						<input type ="number" min ="0" name="numeroDevis" id ="numeroDevis"required>
 					</p>
 					<p>
+						<label for="nomDevis">Nom du  devis </label>
+						<input type ="text" name="nomDevis" id ="nomDevis"required>
+					</p>
+					<p>
 						<label for="dateDevis">Date du devis </label>
 						<input type ="date"  name="dateDevis"  id ="dateDevis"required>
 					</p>
-					
 					<p>
 						<label for="numeroCL">Numéro client </label>
-						<input type ="number" min ="0"  name="numeroCL" id ="numeroCL"required>
-					</p>
-					<p>
-						<label for="idClient">id  client </label>
-						<input type ="number" min ="0"  name="idClient" id ="idClient"required>
+						<select name="numeroCL" id ="numeroCL" size="1"required>
+							
+							<?php
+				                 $sql2= "SELECT * from client ";
+				                 $response= $bdd->query($sql2);
+				                 while ($donnees = $response->fetch(PDO::FETCH_ASSOC)) { 
+			                ?>
+			                 <option><?php echo $donnees['numero']; ?></option>
+			                <?php
+				                }
+				                $response->closeCursor();
+			                ?>
+						</select>
 					</p>
 					<p>
 						<input type ="submit" value ="modifier" name = "submit" id="submit">

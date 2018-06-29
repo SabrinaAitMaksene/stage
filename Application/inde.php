@@ -32,17 +32,19 @@ try
         <li><a href="ajoutClient.php">Ajouter un client</a></li>
         <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
         <li><a href="afficherD.php">afficher la liste des devis </a></li>
+        <li><a href="editP.php">propriétaire </a></li>
         
       </center>
     </ul>
     <br><br><br>
     
           <div class="searchTable">
-          <input type="text" id="searchBar" onkeyup="search()">
+          <input type="text" id="searchBar" onkeyup="search() " placeholder="filtrer par nom">
             <table id="pageTable">
                 <tr class="header">
                     <th >Nom du client</th>
                     <th >Prenom du client</th>
+                     <th >Numéro du client</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>
@@ -54,7 +56,8 @@ try
                         <tr>
                          <td><?php echo $donnees['nomClient']; ?></td>
                          <td><?php echo $donnees['prenomClient']; ?></td>
-                         <?php echo "<td>".'<a href="edit.php?id='.$donnees['idClient'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
+                          <td><?php echo $donnees['numero']; ?></td>
+                         <?php echo "<td>".'<a href="editC.php?id='.$donnees['idClient'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
                          <?php echo "<td>".'<a href="delete.php?id='.$donnees['idClient'].'" id="del" class="btn"><i class="fas fa-trash"></i></a></td>'?>
                        </tr>
                 <?php

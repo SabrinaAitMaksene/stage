@@ -50,6 +50,7 @@
 		<li><a href="ajoutClient.php">Ajouter un client</a></li>
 		<li><a href="ajoutDevis.php">Ajouter un devis</a></li>
 		<li><a href="afficherD.php">afficher la liste des devis </a></li>
+		<li><a href="editP.php">propriétaire </a></li>
       </center>
     </ul>
     <br><br><br>
