@@ -7,26 +7,26 @@
 	 {
 	 	die('erreur :'.$e->getMessage());
 	 }
- 	$ndevis= $_GET['nd'];
+ 	$nfacture= $_GET['nd'];
  	if (isset ($_POST['envoiL']))
  	{
- 		 $sql="SELECT idDevis FROM devis WHERE  numeroDevis = $ndevis";
+ 		 $sql="SELECT idFacture FROM factures WHERE  numeroFacture = $nfacture";
  		 $response = $bdd->query( $sql);
  		 $donnees= $response->fetch();
- 		 $idDevis= $donnees['idDevis'];
- 		 $referenceD=$_POST['referenceD'];
- 		 $descriptionD=$_POST['descriptionD'];
- 		 $quantiteD=$_POST['quantiteD'];
- 		 $prixUnitaireD=$_POST['prixUnitaireD'];
+ 		 $idFacture= $donnees['idFacture'];
+ 		 $referenceF=$_POST['referenceF'];
+ 		 $descriptionF=$_POST['descriptionF'];
+ 		 $quantiteF=$_POST['quantiteF'];
+ 		 $prixUnitaireF=$_POST['prixUnitaireF'];
 
- 		 $requete = $bdd->prepare('INSERT INTO lignedevis(referenceD,descriptionD,quantiteD,prixUnitaireD,idDevis) VALUES(:referenceD, :descriptionD, :quantiteD, :prixUnitaireD, :idDevis)');
+ 		 $requete = $bdd->prepare('INSERT INTO lignefacture(referenceF,descriptionF,quantiteF,prixUnitaireF,idFacture) VALUES(:referenceF, :descriptionF, :quantiteF, :prixUnitaireF, :idFacture)');
  		
  		 $requete->execute(array(
- 		 'referenceD'=>$referenceD,
- 		 'descriptionD'=>$descriptionD,
- 		 'quantiteD'=>$quantiteD,
- 		 'prixUnitaireD'=>$prixUnitaireD,
- 		 'idDevis'=>$idDevis
+ 		 'referenceF'=>$referenceF,
+ 		 'descriptionF'=>$descriptionF,
+ 		 'quantiteF'=>$quantiteF,
+ 		 'prixUnitaireF'=>$prixUnitaireF,
+ 		 'idFacture'=>$idFacture
  		 ));
  		 echo'ligne ajoutée ';
  	}
@@ -46,11 +46,11 @@
     <br><br><br>
     <ul id="menu">
       <center>
-		<li><a href="index.php">Accueil </a></li>
+        <li><a href="index.php">Accueil </a></li>
         <li><a href="ajoutClient.php">Ajouter un client</a></li>
         <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
         <li><a href="afficherD.php">afficher les devis </a></li>
-         <li><a href="ajoutF.php">Ajouter une facture</a></li>
+        <li><a href="ajoutF.php">Ajouter une facture</a></li>
         <li><a href="afficherF.php">afficher les factures </a></li>
         <li><a href="editP.php">propriétaire </a></li>
 
@@ -63,19 +63,19 @@
 				<p>
 
 					<label for="reference">Reference </label>
-					<input type ="text"  id ="referenceD" name="referenceD">
+					<input type ="text"  id ="referenceF" name="referenceF">
 				</p>
 				<P>
 					<label for="descrip">Description</label>
-					<input type ="text"  id ="descriptionD" name="descriptionD">
+					<input type ="text"  id ="descriptionF" name="descriptionF">
 				</P>
 				<P>
 					<label for="quantite">Quantité</label>
-					<input type ="number"  min ="0" id ="quantiteD" name="quantiteD">
+					<input type ="number"  min ="0" id ="quantiteF" name="quantiteF">
 				</P>
 				<P>
 					<label for ="pu">Prix Unitaire</label> 
-					<input type ="number" min ="0"   id ="prixUnitaireD" name="prixUnitaireD"> 
+					<input type ="number" min ="0"   id ="prixUnitaireF" name="prixUnitaireF"> 
 				</P>
 				<p>
 					<input type = "submit" value="Ajouter un element " id ="envoiL" name="envoiL">

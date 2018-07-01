@@ -53,11 +53,14 @@
 		
 			<ul id="menu">
 		      <center>
-		        <li><a href="inde.php">Accueil </a></li>
+		        <li><a href="index.php">Accueil </a></li>
 		        <li><a href="ajoutClient.php">Ajouter un client</a></li>
 		        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
-		        <li><a href="afficherD.php">afficher la liste des devis </a></li>
+		        <li><a href="afficherD.php">afficher les devis </a></li>
+		        <li><a href="ajoutF.php">Ajouter une facture</a></li>
+		        <li><a href="afficherF.php">afficher les factures </a></li>
 		        <li><a href="editP.php">propriétaire </a></li>
+
 		      </center>
    			 </ul>
    			 <br><br><br>
@@ -102,10 +105,6 @@
 			<div id ="devisF">
 				<form method="post" action="reception.php" enctype="multipart/form-data">
 					 </br></br>
-					 <p>
-						<label for="nomDevis">Nom du devis </label>
-						<input type ="text"  name="nomDevis"  id ="nomDevis"required>
-					 </p> </form><br/>
 					 <P><?php echo '<i class="fas fa-upload"></i>';?> 
 					 <input type ="file" name ="devis" id ="devis"></p>
 					 <p><input type="hidden" name="MAX_FILE_SIZE" value="1048576" /></p>
@@ -113,18 +112,5 @@
 				</form>	
 			</div>
 			<br/>
-			<div id ="factureF">
-				<form method="post" action="receptionF.php" enctype="multipart/form-data"> 
-				     </br></br>
-					 <p>
-						<label for="nomFacture">Nom de la facture</label>
-						<input type ="text"  name="nomFacture"  id ="nomFacture"required>
-					 </p> <br/>
-					 <P><?php echo '<i class="fas fa-upload"></i>';?> 
-					 <input type ="file" name ="facture" id="facture"></p>
-					 <p><input type="hidden" name="MAX_FILE_SIZE" value="1048576" /></p>
-					 <p><input type="submit" value="envoyer" name="upload_submit" id="upload_submit" ></p>
-				</form>
-			</div>
 	</body>
 </html>

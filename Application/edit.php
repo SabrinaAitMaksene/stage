@@ -60,11 +60,14 @@
 		
 			<ul id="menu">
 		      <center>
-		        <li><a href="inde.php">Accueil </a></li>
+		        <li><a href="index.php">Accueil </a></li>
 		        <li><a href="ajoutClient.php">Ajouter un client</a></li>
 		        <li><a href="ajoutDevis.php">Ajouter un devis</a></li>
-		        <li><a href="afficherD.php">afficher la liste des devis </a></li>
+		        <li><a href="afficherD.php">afficher les devis </a></li>
+		        <li><a href="ajoutF.php">Ajouter une facture</a></li>
+		        <li><a href="afficherF.php">afficher les factures </a></li>
 		        <li><a href="editP.php">propriétaire </a></li>
+
 		      </center>
    			 </ul>
    			 <br><br><br>

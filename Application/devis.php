@@ -11,8 +11,15 @@
          $response->closeCursor();
 ?>
 <?php
-
+ 	 $sql3= "SELECT * from client where numero= $ncl ";
+         $response= $bdd->query($sql3);
+         $donnees= $response->fetch();
+         $nomClient= $donnees['nomClient'];
+         $prenomClient= $donnees['prenomClient'];
+         $adresseClient= $donnees['adresseClient'];
+         $response->closeCursor();
 ?>
+
 <style type ="text/css">
 	table{ border-collapse: collapse; width:100%;color:#717375;font-size:12pt;font-family: helvetica; line-height: 6mm;}
 	strong{color:#000;}
@@ -56,8 +63,9 @@
 		 		<strong>SIRET:</strong> <?php echo $Siret?>
 		 	</td>
 		 	<td style="width:30%;">
-				<?php echo $nom." ".$prenom?><br/>
-		 		adresse :
+				<?php echo $nomClient." ".$prenomClient?><br/>
+		 		adresse : 
+		 		<?php echo $adresseClient?>
 		 	</td>
 		</tr>
 	</table>

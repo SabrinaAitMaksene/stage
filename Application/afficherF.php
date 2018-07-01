@@ -22,7 +22,7 @@ try
 	<body>
 		<div id="bloc_page">
       <header>
-        <div id="titre_principal"> <H1>Afficher  les devis </H1></div>
+        <div id="titre_principal"> <H1>Afficher  les factures</H1></div>
       </header>
     </div>
     <br><br><br>
@@ -42,33 +42,29 @@ try
     <br><br><br>
     
           <div class="searchTable">
-          <input type="text" id="searchBar" onkeyup="search()" placeholder="Filtrer par numero du devis">
+          <input type="text" id="searchBar" onkeyup="search()" placeholder="Filtrer par numero de la facture">
           <input type="text" id="searchBar1" onkeyup="search1()"placeholder="Filtrer par numero du client ">
             <table id="pageTable">
                 <tr class="header">
-                    <th >Numéro du devis</th>
-                     <th >Nom du devis</th>
-                    <th >Date du devis</th>
-                    <th >Numero du client</th>
+                    <th>numero du client</th>
+                    <th>numero de la facture</th>
+                    <th>nom de la facture</th>
+                    <th>Date de la facture</th>
                     <th>Afficher </th>
                     <th>Generer</th>
-                    <th>Modifier</th> 
-                    <th>Supprimer</th>
                 </tr>
                 
                 <?php
-                 $sql2= "SELECT * from devis ";
+                 $sql2= "SELECT * from factures ";
                  $response= $bdd->query($sql2);
                 while ($donnees = $response->fetch(PDO::FETCH_ASSOC)) { ?>
                         <tr>
-                         <td><?php echo $donnees['numeroDevis']; ?></td>
-                         <td><?php echo $donnees['nomDevis']; ?></td>
-                         <td><?php echo $donnees['dateDevis']; ?></td>
                          <td><?php echo $donnees['numeroCL']; ?></td>
-                         <?php echo "<td>".'<a href="show.php?id='.$donnees['idDevis'].'" id="show" class="btn"><i class="far fa-eye"></i></a></td>'?>
-                         <?php echo "<td>".'<a href="devis.php?nd='.$donnees['numeroDevis'].'" id="generate" class="btn"><i class="fab fa-creative-commons-share"></i></a></td>'?>
-                         <?php echo "<td>".'<a href="edit.php?id='.$donnees['idDevis'].'" id="edit" class="btn"><i class="fas fa-pencil-alt"></i></a></td>'?>
-                         <?php echo "<td>".'<a href="delete.php?id='.$donnees['idDevis'].'" id="del" class="btn"><i class="fas fa-trash"></i></a></td>'?>
+                         <td><?php echo $donnees['numeroFacture']; ?></td>
+                         <td><?php echo $donnees['nomFacture']; ?></td>
+                         <td><?php echo $donnees['dateFacture']; ?></td>
+                         <?php echo "<td>".'<a href="showF.php?id='.$donnees['idFacture'].'" id="show" class="btn"><i class="far fa-eye"></i></a></td>'?>
+                         <?php echo "<td>".'<a href="facture.php?nd='.$donnees['numeroFacture'].'" id="generate" class="btn"><i class="fab fa-creative-commons-share"></i></a></td>'?>
                        </tr>
                 <?php
                 }
@@ -87,7 +83,7 @@ try
 
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0] ;
+                    td = tr[i].getElementsByTagName("td")[1] ;
                     if (td) {
                         if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                             tr[i].style.display = "";
@@ -107,7 +103,7 @@ try
 
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[3] ;
+                    td = tr[i].getElementsByTagName("td")[0] ;
                     if (td) {
                         if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                             tr[i].style.display = "";
